@@ -28,7 +28,7 @@ class job(object):
                 self.target = client.message['params']['target'].encode('utf-8')
                 self.target = b''.join([self.target[i:i+2] for i in range(0, len(self.target), 2)][::-1])
             else:
-                self.subscription_id = client.message['result']['job']['id']
+                self.subscription_id = client.message['result']['id']
                 self.job_id = client.message['result']['job']['job_id']
                 self.blob = client.message['result']['job']['blob']
                 self.target = client.message['result']['job']['target'].encode('utf-8')
