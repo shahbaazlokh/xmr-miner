@@ -19,15 +19,15 @@ class client(object):
 		self.job = None
 
 	def connect(self, miner, thread):
-		if self.message_id > 0:
-			self.message_id += miner.threads
-		else:
-			self.message_id = thread
 		while True:
+			if not self.error:
+				print('[Thread #' + str(thread + 1) + '] Connecting to ' + miner.hostname + ':' + str(miner.port) + '...')
+			else:
+				print('[Thread #' + str(thread + 1) + '] Timeout occurred. Reconnecting to ' + miner.hostname + ':' + str(miner.port) + '...')
 			self.error = False
-			print('[Thread #' + str(thread + 1) + '] Connecting to ' + miner.hostname + ':' + str(miner.port) + '...')
 			try:
 				self.socket = socket.create_connection((miner.hostname, miner.port))
+				self.socket.settimeout(3)
 			except:
 				self.error = True
 				time.sleep(10)
@@ -38,7 +38,10 @@ class client(object):
 		while True:
 			if self.error:
 				break
-			self.message_id += miner.threads
+			if self.message_id > 0:
+				self.message_id += miner.threads
+			else:
+				self.message_id = thread + 1
 			self.message = {}
 			self.message['jsonrpc'] = '2.0'
 			self.message['id'] = self.message_id
