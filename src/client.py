@@ -15,28 +15,29 @@ class client(object):
 		self.request = ''
 		self.reply = ''
 		self.message = None
-		self.error = False
+		self.error = [ False, 0 ]
 		self.job = None
 
 	def connect(self, miner, thread):
 		while True:
-			if not self.error:
+			if not self.error[0]:
 				print('[Thread #' + str(thread + 1) + '] Connecting to ' + miner.hostname + ':' + str(miner.port) + '...')
-			else:
+			elif self.error[1] >= 5:	
+				self.error[1] = 0
 				print('[Thread #' + str(thread + 1) + '] Timeout occurred. Reconnecting to ' + miner.hostname + ':' + str(miner.port) + '...')
-			self.error = False
+			self.error[0] = False
 			try:
 				self.socket = socket.create_connection((miner.hostname, miner.port))
 				self.socket.settimeout(3)
 			except:
-				self.error = True
-				time.sleep(10)
+				self.error = [ True, 5 ]
+				time.sleep(15)
 				continue
 			self.handle_login(miner, thread)
 
 	def handle_login(self, miner, thread):
 		while True:
-			if self.error:
+			if self.error[0]:
 				break
 			if self.message_id > 0:
 				self.message_id += miner.threads
@@ -65,7 +66,8 @@ class client(object):
 					if rid_1 in self.reply or rid_2 in self.reply or rid_3 in self.reply or rid_4 in self.reply:
 						break
 			except:
-				self.error = True
+				self.error[0] = True
+				self.error[1] += 1
 				break
 			if miner.debug:
 				print('[Thread #' + str(thread + 1) + '] Receiving message #' + str(self.message_id) + ':')
@@ -111,7 +113,8 @@ class client(object):
 					if rid_1 in self.reply or rid_2 in self.reply or rid_3 in self.reply or rid_4 in self.reply:
 						break
 			except:
-				self.error = True
+				self.error[0] = True
+				self.error[1] += 1
 				break
 			if miner.debug:
 				print('[Thread #' + str(thread + 1) + '] Receiving message #' + str(self.message_id) + ':')
@@ -123,7 +126,10 @@ class client(object):
 				self.reply = self.reply.split('\n')[0]				
 			if 'OK' in self.reply:
 				miner.accepted_shares += 1
-			print('[Thread #' + str(thread + 1) + '] Result sent! Accepted ' + str(miner.accepted_shares) + ' of ' + str(miner.submitted_shares) + ' total shares.')
+				print('[Thread #' + str(thread + 1) + '] Result accepted! Sent ' + str(miner.accepted_shares) + ' valid of ' + str(miner.submitted_shares) + ' total shares.')
+			else:
+				print('[Thread #' + str(thread + 1) + '] Result rejected! Sent ' + str(miner.accepted_shares) + ' valid of ' + str(miner.submitted_shares) + ' total shares.')
+			print('[Thread #' + str(thread + 1) + '] Asking for a new job. Please wait...')
 			break
 
 	def disconnect(self, miner, thread):
