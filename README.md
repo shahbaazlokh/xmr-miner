@@ -7,6 +7,19 @@ Even in the future, maybe I will rewrite it entirely in C++ for speed improvemen
 
 WARNING: C code is published separately in my other repo https://github.com/menekevin/cryptonight
 
+** Last update: v9 fork support added (October 2018 fork) **
+
+If you like it, please donate helping us to ensure timely development of this software:
+
+```
+PAYPAL: kevin(dot)menegatti(at)gmail(dot)com
+BTC: 348jTP9Lv5hoFiYLX7DxAy7g3znEv836V8
+ETH: 0xA6f3e78972A9b803674cCE3c12dE209aAAa810BB
+XMR: 4A4pdzJ8uYDg3hn18uzwfCNTxpRF2msYeaZBb91s5B3RAbeVHcz25Em88TzwWzmHLs6ByPJgB5fBALsUeg9mZWQXNaY6DGw
+```
+
+Thank you!
+
 ## Command Line Interface
 ```
 xmr-miner [-h] [-f FILE] [-o URL] [-u USERNAME] [-p PASSWORD] [-v VARIANT] [-t THREADS] [-d]
@@ -17,7 +30,7 @@ optional arguments:
 	-o URL, --url URL     			mining pool - eg: stratum+tcp://mining.pool.com:3333 (required, if not file given)
 	-u USERNAME, --username USERNAME	username or wallet address (required, if not file given)
 	-p PASSWORD, --password PASSWORD	password (optional)
-	-v VARIANT, --variant VARIANT		pow variant 0 (original) or 1 (April 2018 fork) (default = 1)
+	-v VARIANT, --variant VARIANT		pow variant 0 (original) or 1 (April 2018) or 2 (October 2018) (default = 2)
 	-t THREADS, --threads THREADS		mining threads (default = 1)
 	-d, --debug
 
@@ -26,7 +39,7 @@ remote configuration file formatting:
 	1	URL				mining pool - eg: stratum+tcp://mining.pool.com:3333 (required)
 	2	USERNAME			username or wallet address (required)
 	3	PASSWORD			password (optional)
-	4	VARIANT				pow variant 0 (original) or 1 (April 2018 fork) (default = 1)
+	4	VARIANT				pow variant 0 (original) or 1 (April 2018) or 2 (October 2018) (default = 2)
 	5	THREADS				mining threads (default = 1)	
 ```
 ## License
