@@ -13,8 +13,7 @@ If you like it, please donate helping us to ensure timely development of this so
 
 ```
 PAYPAL: kevin(dot)menegatti(at)gmail(dot)com
-BTC: 348jTP9Lv5hoFiYLX7DxAy7g3znEv836V8
-ETH: 0xA6f3e78972A9b803674cCE3c12dE209aAAa810BB
+BTC: 1CdjKH7idPv6AJX7vUrEAf27c5A5RhhYQH
 XMR: 4A4pdzJ8uYDg3hn18uzwfCNTxpRF2msYeaZBb91s5B3RAbeVHcz25Em88TzwWzmHLs6ByPJgB5fBALsUeg9mZWQXNaY6DGw
 ```
 
