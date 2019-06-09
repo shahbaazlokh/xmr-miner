@@ -13,8 +13,6 @@ If you like it, please donate helping us to ensure timely development of this so
 
 ```
 PAYPAL: kevin(dot)menegatti(at)gmail(dot)com
-BTC: 1CdjKH7idPv6AJX7vUrEAf27c5A5RhhYQH
-XMR: 4A4pdzJ8uYDg3hn18uzwfCNTxpRF2msYeaZBb91s5B3RAbeVHcz25Em88TzwWzmHLs6ByPJgB5fBALsUeg9mZWQXNaY6DGw
 ```
 
 Thank you!
