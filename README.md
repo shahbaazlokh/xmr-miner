@@ -7,7 +7,7 @@ Even in the future, maybe I will rewrite it entirely in C++ for speed improvemen
 
 WARNING: C code is published separately in my other repo https://github.com/menekevin/cryptonight
 
-** Last update: v9 fork support added (October 2018 fork) **
+** Last update: v11 fork support added (March 2019 CryptoNightR hard fork) -- 11 June 2019 -- ONLY FOR WIN64 AT THE MOMENT -- **
 
 If you like it, please donate helping us to ensure timely development of this software:
 
@@ -27,7 +27,7 @@ optional arguments:
 	-o URL, --url URL     			mining pool - eg: stratum+tcp://mining.pool.com:3333 (required, if not file given)
 	-u USERNAME, --username USERNAME	username or wallet address (required, if not file given)
 	-p PASSWORD, --password PASSWORD	password (optional)
-	-v VARIANT, --variant VARIANT		pow variant 0 (original) or 1 (April 2018) or 2 (October 2018) (default = 2)
+	-v VARIANT, --variant VARIANT		pow variant (default = 4 [March 2019 CryptoNightR hard fork])
 	-t THREADS, --threads THREADS		mining threads (default = 1)
 	-d, --debug
 
@@ -36,7 +36,7 @@ remote configuration file formatting:
 	1	URL				mining pool - eg: stratum+tcp://mining.pool.com:3333 (required)
 	2	USERNAME			username or wallet address (required)
 	3	PASSWORD			password (optional)
-	4	VARIANT				pow variant 0 (original) or 1 (April 2018) or 2 (October 2018) (default = 2)
+	4	VARIANT				pow variant (default = 4 [March 2019 CryptoNightR hard fork])
 	5	THREADS				mining threads (default = 1)	
 ```
 ## License

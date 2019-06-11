@@ -17,7 +17,7 @@ def init():
     parser.add_argument('-o', '--url', help = 'mining pool - eg: stratum+tcp://mining.pool.com:3333 (required, if not file given)')
     parser.add_argument('-u', '--username', default = '', help = 'username or wallet address (required, if not file given)')
     parser.add_argument('-p', '--password', default = '', help = 'password (optional)')
-    parser.add_argument('-v', '--variant', default = '2', help = 'pow variant 0 (original) or 1 (April 2018) or 2 (October 2018) (default = 2)')
+    parser.add_argument('-v', '--variant', default = '4', help = 'pow variant (default = 4 [March 2019 CryptoNightR hard fork])')
     parser.add_argument('-t', '--threads', default ='1', help = 'mining threads (default = 1)')
     parser.add_argument('-d', '--debug', action='store_true')
     options = parser.parse_args(sys.argv[1:])
@@ -43,10 +43,10 @@ def init():
             options.url = 'stratum+tcp://' + options.url
         try:
             int(options.variant)
-            if int(options.variant) > 2:
-                options.variant = 2
+            if int(options.variant) > 4:
+                options.variant = 4
         except:
-            options.variant = 2
+            options.variant = 4
         try:
             int(options.threads)
         except:
@@ -61,7 +61,7 @@ def init():
         print('  1  URL         mining pool - eg: stratum+tcp://mining.pool.com:3333 (required)')
         print('  2  USERNAME    username or wallet address (required)')
         print('  3  PASSWORD    password (optional)')
-        print('  4  VARIANT     pow variant 0 (original) or 1 (April 2018) or 2 (October 2018) (default = 2)')
+        print('  4  VARIANT     pow variant (default = 4 [March 2019 CryptoNightR hard fork])')
         print('  5  THREADS     mining threads (default = 1)')
         print('\n')
         input('Press ENTER to quit...')
